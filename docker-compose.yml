@@ -1,0 +1,104 @@
+version: "3.7"
+networks:
+  scb-net:
+    driver: bridge
+services:
+  scb-nginx:
+    container_name: scb-nginx
+    restart: always
+    build: ./nginx
+    ports:
+      - 4105:80
+    depends_on:
+      - scb-backend
+    networks:
+      - scb-net
+
+  scb-backend:
+    container_name: scb-backend
+    restart: always
+    build:
+      context: ./scb-backend
+      dockerfile: Dockerfile
+    working_dir: /scb
+    volumes:
+      - ./scb:/scb
+    command: bash -c "./manage.py makemigrations && ./manage.py migrate && gunicorn scb.wsgi:application --workers=2 --bind 0.0.0.0:8000 & celery -A scb worker -l INFO -c 2"
+    networks:
+      - scb-net
+    environment:
+      DEBUG: ${DEBUG}
+      SECRET_KEY: ${SECRET_KEY}
+      CSRF_TRUSTED_ORIGINS: ${CSRF_TRUSTED_ORIGINS}
+      ALLOWED_HOSTS: ${ALLOWED_HOSTS}
+      DJANGO_DB_ENGINE: "django.db.backends.postgresql"
+      DJANGO_DB_HOST: ${POSTGRES_HOST}
+      DJANGO_DB_PORT: ${DJANGO_DB_PORT}
+      DJANGO_DB_NAME: ${POSTGRES_DB}
+      DJANGO_DB_USER: ${POSTGRES_USER}
+      DJANGO_DB_PASSWORD: ${POSTGRES_PASSWORD}
+
+      REDIS_HOST: ${REDIS_HOST}
+      REDIS_PORT: ${REDIS_PORT}
+
+    depends_on:
+      - scb-postgres
+      - scb-rabbit
+      - scb-redis
+
+  scb-postgres:
+    container_name: scb-postgres
+    restart: always
+    image: postgres:14.3
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - ${DATA_ROOT}/postgres/data/:/var/lib/postgresql/data
+      - ${DATA_ROOT}/pginit/:/docker-entrypoint-initdb.d
+    networks:
+      - scb-net
+
+  scb-pgadmin:
+    container_name: scb-pgadmin
+    restart: always
+    image: dpage/pgadmin4:6.10
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_USER}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
+    ports:
+      - "${PGADMIN_PORT}:80"
+    volumes:
+      - ${DATA_ROOT}/pgadmin:/var/lib/pgadmin
+    depends_on:
+      - scb-postgres
+    networks:
+      - scb-net
+
+  scb-rabbit:
+    container_name: scb-rabbit
+    restart: always
+    image: rabbitmq:3.10.7-management
+    ports:
+      - "${RABBIT_PORT}:5672"
+      - "${RABBIT_ADMIN_PORT}:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBIT_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBIT_PASSWORD}
+    networks:
+      - scb-net
+  scb-redis:
+    container_name: scb-redis
+    restart: always
+    image: redis:7.0.0
+    privileged: true
+    ports:
+      - "${REDIS_PORT}:6379"
+    volumes:
+      - ${DATA_ROOT}/redis/logs:/var/log
+      - ${DATA_ROOT}/redis/data:/data
+    networks:
+      - scb-net
