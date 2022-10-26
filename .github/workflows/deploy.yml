@@ -1,7 +1,7 @@
 name: CI
 env:
   APPLICATION_NAME : svb_hack
-  PROJECT_NAME: "svb_hack"
+  PROJECT_NAME: "scb"
   STAGE: "dev"
   VERSION: "ver-${{ github.sha }}"
   V: "1.0"
@@ -30,7 +30,9 @@ jobs:
             cd ${{ env.WORK_DIR }}
             git checkout dev
             git pull
-            docker-compose stop ${{ env.PROJECT_NAME }}
-            docker container rm ${{ env.PROJECT_NAME }}
+            docker-compose -f down
+            docker container rm ${{ env.PROJECT_NAME }}-nginx
+            docker container rm ${{ env.PROJECT_NAME }}-backend
+            docker container rm ${{ env.PROJECT_NAME }}-postgres
             docker rmi ${{ env.PROJECT_NAME}} -f
-            docker-compose up --force-recreate -build -d
+            docker-compose -f up --force-recreate -d
