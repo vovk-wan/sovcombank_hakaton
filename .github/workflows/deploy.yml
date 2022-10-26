@@ -35,4 +35,4 @@ jobs:
             docker container rm ${{ env.PROJECT_NAME }}-backend
             docker container rm ${{ env.PROJECT_NAME }}-postgres
             docker rmi ${{ env.PROJECT_NAME}} -f
-            docker-compose -f up --force-recreate -d
+            docker-compose up --force-recreate -d
