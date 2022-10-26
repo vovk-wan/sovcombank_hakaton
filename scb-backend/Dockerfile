@@ -1,5 +1,5 @@
 # pull official base image
-FROM python:3.11.0-slim-buster
+FROM ubuntu:22.04
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
