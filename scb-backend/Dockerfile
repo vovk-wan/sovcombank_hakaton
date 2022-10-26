@@ -1,5 +1,5 @@
 # pull official base image
-FROM python:3.10-slim
+FROM python:3.11.0-slim-buster
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
