@@ -2,13 +2,14 @@ name: CI
 env:
   APPLICATION_NAME : svb_hack
   PROJECT_NAME: "svb_hack"
+  STAGE: "dev"
   VERSION: "ver-${{ github.sha }}"
   V: "1.0"
 on:
   push:
-    branches: [ "dev" ]
+    branches: [ dev ]
   pull_request:
-    branches: [ "dev" ]
+    branches: [ dev ]
 
 jobs:
 
