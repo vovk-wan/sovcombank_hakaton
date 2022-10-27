@@ -1,10 +1,10 @@
 # pull official base image
-FROM ubuntu:22.04
+FROM python:3.10-slim
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 COPY ./requirements.txt ./
-RUN apt-get update && apt-get install -y python3-dev make python3-pip
+RUN apt-get update && apt-get install -y python3-dev make
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
