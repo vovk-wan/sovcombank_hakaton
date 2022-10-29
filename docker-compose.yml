@@ -20,7 +20,7 @@ services:
     image: 11744711/temp_for_hackaton:svb_hack-1.0
     working_dir: /scb
     volumes:
-      - ./scb:/scb
+      - ./scb-backend/scb:/scb
     command: bash -c "./manage.py makemigrations && ./manage.py migrate && gunicorn scb.wsgi:application --workers=2 --bind 0.0.0.0:8000 & celery -A scb worker -l INFO -c 2"
     networks:
       - scb-net
