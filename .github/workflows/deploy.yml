@@ -1,7 +1,7 @@
 env:
   DOCKER_USER: "11744711"
   DOCKER_REPOSITORY_NAME: "temp_for_hackaton"
-  PROJECT_NAME: "svb_hack"
+  PROJECT_NAME: "scb"
   STAGE: "dev"
   VERSION: "ver-${{ github.sha }}"
   V: "1.0"
