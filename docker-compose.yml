@@ -17,7 +17,7 @@ services:
   scb-backend:
     container_name: scb-backend
     restart: always
-    image: 11744711/temp_for_hackaton:svb_hack-1.0
+    image: 11744711/temp_for_hackaton:scb_hack-1.0
     working_dir: /scb
     volumes:
       - ./scb-backend/scb:/scb
