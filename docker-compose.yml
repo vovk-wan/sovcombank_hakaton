@@ -9,6 +9,9 @@ services:
     build: ./nginx
     ports:
       - 4105:80
+    volumes:
+      - ${DATA_ROOT}/static/:/static
+      - ${DATA_ROOT}/media/:/media
     depends_on:
       - scb-backend
     networks:
