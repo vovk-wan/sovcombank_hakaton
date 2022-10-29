@@ -24,3 +24,4 @@ class Config(BaseSettings):
     redis_port: int
     redis_db: int = 0
     celery_count: int = 2
+    data_root: str

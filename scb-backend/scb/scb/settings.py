@@ -16,7 +16,7 @@ from .config import Config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-CONFIG = Config(_env_file=BASE_DIR / ".env", _env_file_encoding="UTF-8")
+CONFIG = Config(_env_file=BASE_DIR / "scb" / ".env", _env_file_encoding="UTF-8")
 SECRET_KEY = CONFIG.secret_key
 DEBUG = CONFIG.debug
 ALLOWED_HOSTS = CONFIG.allowed_hosts.split()
@@ -115,7 +115,7 @@ STATIC_URL = "/static/"
 if DEBUG:
     STATICFILES_DIRS = (BASE_DIR.parent / "static",)
 else:
-    STATIC_ROOT = BASE_DIR / "static"
+    STATIC_ROOT = Path(CONFIG.data_root) / "static"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
