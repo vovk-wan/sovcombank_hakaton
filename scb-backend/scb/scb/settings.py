@@ -16,7 +16,7 @@ from .config import Config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-CONFIG = Config(_env_file=BASE_DIR / ".env", _env_file_encoding="UTF-8")
+CONFIG = Config(_env_file=BASE_DIR / "scb" / ".env", _env_file_encoding="UTF-8")
 SECRET_KEY = CONFIG.secret_key
 DEBUG = CONFIG.debug
 ALLOWED_HOSTS = CONFIG.allowed_hosts.split()
