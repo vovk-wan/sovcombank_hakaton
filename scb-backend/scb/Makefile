@@ -8,3 +8,7 @@ lint:
 	black .
 celery:
 	celery -A scb worker -l INFO -c 2
+fix_dump:
+	./manage.py dumpdata auth.user --format=yaml > fixtures/user.yaml
+fix_load:
+	./manage.py loaddata fixtures/user.yaml

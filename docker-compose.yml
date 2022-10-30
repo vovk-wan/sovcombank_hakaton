@@ -24,7 +24,7 @@ services:
     working_dir: /scb
     volumes:
       - ./scb-backend/scb:/scb
-    command: bash -c "./manage.py makemigrations && ./manage.py migrate && gunicorn scb.wsgi:application --workers=2 --bind 0.0.0.0:8000 & celery -A scb worker -l INFO -c 2"
+    command: bash -c "make migrate && make fix_load && gunicorn scb.wsgi:application --workers=2 --bind 0.0.0.0:8000 & celery -A scb worker -l INFO -c 2"
     networks:
       - scb-net
     environment:

@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+
 from .config import Config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -31,6 +34,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "rest_framework",
 ]
 if CONFIG.debug:
     INSTALLED_APPS.append("debug_toolbar")
@@ -124,4 +128,21 @@ CACHES = {
         "BACKEND": "django.core.cache.backends.redis.RedisCache",
         "LOCATION": f"redis://{CONFIG.redis_host}:{CONFIG.redis_port}",
     }
+}
+if CONFIG.debug is not True:
+    sentry_sdk.init(
+        dsn="http://66a478219262479e8b74942eee834bb2@sentry.ykyc.ru/4",
+        integrations=[
+            DjangoIntegration(),
+        ],
+        traces_sample_rate=1.0,
+        send_default_pii=True,
+    )
+
+REST_FRAMEWORK = {
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 10,
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
 }
