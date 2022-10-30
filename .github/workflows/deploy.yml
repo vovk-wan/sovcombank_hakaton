@@ -5,7 +5,7 @@ env:
   STAGE: "dev"
   VERSION: "ver-${{ github.sha }}"
   V: "1.0"
-  CHAT_ID: "1222062700"
+  CHAT_ID: "1730476295/1703"
 on:
   push:
     branches: [ dev ]
@@ -62,5 +62,5 @@ jobs:
             docker-compose up --force-recreate -d
             curl \
               --header 'Content-Type: application/json' \
-              --request 'POST' --data '{"chat_id":"${{ env.CHAT_ID }}","text":"Job <<deploy>> completed"}' 
+              --request 'POST' --data '{"chat_id":"${{ env.CHAT_ID }}","text":"Job <<deploy>> completed"}' \
               "https://api.telegram.org/bot${{ secrets.BOT_TOKEN }}/sendMessage"
