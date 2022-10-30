@@ -5,7 +5,7 @@ env:
   STAGE: "dev"
   VERSION: "ver-${{ github.sha }}"
   V: "1.0"
-  CHAT_ID: "1730476295"
+  CHAT_ID: "-1001730476295"
 on:
   push:
     branches: [ dev ]
