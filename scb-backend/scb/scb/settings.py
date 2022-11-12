@@ -19,7 +19,13 @@ from .config import Config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-CONFIG = Config(_env_file=BASE_DIR / "scb" / ".env", _env_file_encoding="UTF-8")
+
+config_path = BASE_DIR.parent.parent / "django.env"
+if config_path.exists():
+    CONFIG = Config(_env_file=config_path, _env_file_encoding="UTF-8")
+else:
+    CONFIG = Config()
+
 SECRET_KEY = CONFIG.secret_key
 DEBUG = CONFIG.debug
 ALLOWED_HOSTS = CONFIG.allowed_hosts.split()

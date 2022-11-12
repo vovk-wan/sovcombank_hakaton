@@ -1,32 +1,49 @@
 version: "3.7"
+
 networks:
   scb-net:
     driver: bridge
+
 services:
-  scb-nginx:
-    container_name: scb-nginx
+#  scb-nginx:
+#    container_name: scb-nginx
+#    restart: always
+#    build: ./nginx
+#    ports:
+#      - "${NGINX_PORT}:80"
+#    volumes:
+#      - ${DATA_ROOT}/static/:/static
+#      - ${DATA_ROOT}/media/:/media
+#    depends_on:
+#      - scb-backend
+#    networks:
+#      - scb-net
+
+  scb-frontend:
+    container_name: scb-frontend
     restart: always
-    build: ./nginx
+    build: ./scb-frontend
     ports:
-      - 80:80
+      - "${FRONTEND_PORT}:80"
     volumes:
       - ${DATA_ROOT}/static/:/static
       - ${DATA_ROOT}/media/:/media
-    depends_on:
-      - scb-backend
+#    command: bash -c "npm run build"
     networks:
       - scb-net
 
   scb-backend:
     container_name: scb-backend
     restart: always
-    image: 11744711/temp_for_hackaton:scb_hack-1.0
+    build: ./scb-backend
+    #    image: 11744711/temp_for_hackaton:scb_hack-1.0
+#    image: python:3.10-slim
     working_dir: /scb
     volumes:
       - ./scb-backend/scb:/scb
     command: bash -c "make migrate && make fix_load && gunicorn scb.wsgi:application --workers=2 --bind 0.0.0.0:8000 & celery -A scb worker -l INFO -c 2"
-    networks:
-      - scb-net
+    ports:
+      - "${BACKEND_PORT}:8000"
     environment:
       DEBUG: ${DEBUG}
       SECRET_KEY: ${SECRET_KEY}
@@ -41,12 +58,12 @@ services:
 
       REDIS_HOST: ${REDIS_HOST}
       REDIS_PORT: ${REDIS_PORT}
-
     depends_on:
       - scb-postgres
       - scb-rabbit
       - scb-redis
-
+    networks:
+      - scb-net
   scb-postgres:
     container_name: scb-postgres
     restart: always
@@ -91,6 +108,7 @@ services:
       RABBITMQ_DEFAULT_PASS: ${RABBIT_PASSWORD}
     networks:
       - scb-net
+
   scb-redis:
     container_name: scb-redis
     restart: always

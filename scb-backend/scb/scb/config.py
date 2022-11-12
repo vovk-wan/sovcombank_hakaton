@@ -16,12 +16,12 @@ class Config(BaseSettings):
     django_db_name: str = "postgres"
     django_db_user: str = "postgres"
     django_db_password: str = "PostgresPassword"
-    rabbit_host: str
-    rabbit_port: int
-    rabbit_user: str
-    rabbit_password: str
-    redis_host: str
-    redis_port: int
+    rabbit_host: str = '127.0.0.1'
+    rabbit_port: str = '5672'
+    rabbit_user: str = 'rabbit'
+    rabbit_password: str = 'RabbitPassword'
+    redis_host: str = '127.0.0.1'
+    redis_port: str = '6379'
     redis_db: int = 0
     celery_count: int = 2
-    data_root: str
+    data_root: str = '~/data/scb'

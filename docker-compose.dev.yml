@@ -1,0 +1,126 @@
+version: "3.7"
+
+networks:
+  scb-net:
+    driver: bridge
+
+services:
+
+  scb-nginx:
+    container_name: scb-nginx
+    restart: always
+    build: ./nginx
+    ports:
+      - 4100:80
+    volumes:
+      - ~/data/scb/static/:/static
+      - ~/data/scb/media/:/media
+    depends_on:
+      - scb-backend
+    networks:
+      - scb-net
+
+  scb-frontend:
+    container_name: scb-frontend
+    restart: always
+    build: ./scb-frontend
+    ports:
+      - "4101:80"
+    volumes:
+      - ~/data/scb/static/:/static
+      - ~/data/scb/media/:/media
+    networks:
+      - scb-net
+
+  scb-backend:
+    container_name: scb-backend
+    restart: always
+    build: ./scb-backend
+    #    image: 11744711/temp_for_hackaton:scb_hack-1.0
+#    image: python:3.10-slim
+    working_dir: /scb
+    volumes:
+      - ./scb-backend/scb:/scb
+      - ~/data/scb/static/:/static
+      - ~/data/scb/media/:/media
+    command: bash -c "make migrate && make fix_load && gunicorn scb.wsgi:application --workers=2 --bind 0.0.0.0:8000 & celery -A scb worker -l INFO -c 2"
+    ports:
+      - "4105:8000"
+    environment:
+      DEBUG: 'false'
+      SECRET_KEY: 0000000000000000
+      CSRF_TRUSTED_ORIGINS: "http://0.0.0.0:4105 http://127.0.0.1:4105"
+      ALLOWED_HOSTS: "127.0.0.1 0.0.0.0"
+      DJANGO_DB_ENGINE: "django.db.backends.postgresql"
+      DJANGO_DB_HOST: scb-postgres
+      DJANGO_DB_PORT: 5432
+      DJANGO_DB_NAME: postgres
+      DJANGO_DB_USER: postgres
+      DJANGO_DB_PASSWORD: PostgresPassword
+      RABBIT_HOST: scb-rabbit
+      RABBIT_PORT: 5672
+      REDIS_HOST: scb-redis
+      REDIS_PORT: 6379
+    depends_on:
+      - scb-postgres
+      - scb-rabbit
+      - scb-redis
+    networks:
+      - scb-net
+  scb-postgres:
+    container_name: scb-postgres
+    restart: always
+    image: postgres:14.3
+    ports:
+      - 4110:5432
+    environment:
+      POSTGRES_PASSWORD: PostgresPassword
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - /data/scb/postgres/data/:/var/lib/postgresql/data
+      - /data/scb/pginit/:/docker-entrypoint-initdb.d
+    networks:
+      - scb-net
+
+  scb-pgadmin:
+    container_name: scb-pgadmin
+    restart: always
+    image: dpage/pgadmin4:6.10
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.ru
+      PGADMIN_DEFAULT_PASSWORD: PgAdminPassword
+    ports:
+      - "4115:80"
+    volumes:
+      - /data/scb/pgadmin:/var/lib/pgadmin
+    depends_on:
+      - scb-postgres
+    networks:
+      - scb-net
+
+  scb-rabbit:
+    container_name: scb-rabbit
+    restart: always
+    image: rabbitmq:3.10.7-management
+    ports:
+      - "4120:5672"
+      - "4121:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: rabbit
+      RABBITMQ_DEFAULT_PASS: RabbitPassword
+    networks:
+      - scb-net
+
+  scb-redis:
+    container_name: scb-redis
+    restart: always
+    image: redis:7.0.0
+    privileged: true
+    ports:
+      - "4125:6379"
+    volumes:
+      - /data/scb/redis/logs:/var/log
+      - /data/scb/redis/data:/data
+    networks:
+      - scb-net
