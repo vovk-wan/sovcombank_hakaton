@@ -28,6 +28,7 @@ else:
 
 SECRET_KEY = CONFIG.secret_key
 DEBUG = CONFIG.debug
+# DEBUG = False
 ALLOWED_HOSTS = CONFIG.allowed_hosts.split()
 CSRF_TRUSTED_ORIGINS = CONFIG.csrf_trusted_origins.split()
 
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "drf_yasg",
     "rest_framework",
 ]
 if CONFIG.debug:
@@ -113,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "ru-RU"
 
 TIME_ZONE = "UTC"
 
@@ -126,6 +128,8 @@ if DEBUG:
     STATICFILES_DIRS = (BASE_DIR.parent / "static",)
 else:
     STATIC_ROOT = Path(CONFIG.data_root) / "static"
+    # STATIC_ROOT = Path(CONFIG.data_root) / "static"
+
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 

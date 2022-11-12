@@ -2,13 +2,17 @@
 
 ## поднимаем контейнеры на локальной машине для разработки
 ```shell
-docker-compose -d docker-compose.dev.yml up --build -d scb-redis scb-rabbit scb-postgres scb-pgadmin scb-backend scb-frontend
+docker-compose -d docker-compose.dev.yml up -d --build
 ```
 
 контейнер фронта можно удалить, если он не нужен.
 
 фронт доступен по адресу: 127.0.0.1:4101
 апи доступен по адресу: 127.0.0.1:4101/api/v1
+swagger доступен по адресу: http://127.0.0.1:4101/api/v1/redoc/
+swagger доступен по адресу: http://127.0.0.1:4101/api/v1/swagger/
+админка джанго доступна по адресу: http://127.0.0.1:4101/api/v1/admin/
+админка джанго доступна по адресу: http://127.0.0.1:4101/api/v1/admin/
 
 ## установка backend
 

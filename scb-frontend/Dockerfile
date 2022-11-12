@@ -4,7 +4,7 @@ COPY package.json package-lock.json ./
 RUN npm install -g @angular/cli
 RUN npm install
 COPY . .
-RUN ng build
+RUN npm run build
 
 #STAGE 2
 FROM nginx:latest

@@ -5,19 +5,6 @@ networks:
     driver: bridge
 
 services:
-#  scb-nginx:
-#    container_name: scb-nginx
-#    restart: always
-#    build: ./nginx
-#    ports:
-#      - "${NGINX_PORT}:80"
-#    volumes:
-#      - ${DATA_ROOT}/static/:/static
-#      - ${DATA_ROOT}/media/:/media
-#    depends_on:
-#      - scb-backend
-#    networks:
-#      - scb-net
 
   scb-frontend:
     container_name: scb-frontend
@@ -31,6 +18,8 @@ services:
 #    command: bash -c "npm run build"
     networks:
       - scb-net
+    depends_on:
+      - scb-backend
 
   scb-backend:
     container_name: scb-backend

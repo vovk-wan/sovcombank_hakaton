@@ -6,19 +6,19 @@ networks:
 
 services:
 
-  scb-nginx:
-    container_name: scb-nginx
-    restart: always
-    build: ./nginx
-    ports:
-      - 4100:80
-    volumes:
-      - ~/data/scb/static/:/static
-      - ~/data/scb/media/:/media
-    depends_on:
-      - scb-backend
-    networks:
-      - scb-net
+#  scb-nginx:
+#    container_name: scb-nginx
+#    restart: always
+#    build: ./nginx
+#    ports:
+#      - 4100:80
+#    volumes:
+#      - ~/data/scb/static/:/static
+#      - ~/data/scb/media/:/media
+#    depends_on:
+#      - scb-backend
+#    networks:
+#      - scb-net
 
   scb-frontend:
     container_name: scb-frontend
@@ -27,10 +27,12 @@ services:
     ports:
       - "4101:80"
     volumes:
-      - ~/data/scb/static/:/static
+      - ./static:/static
       - ~/data/scb/media/:/media
     networks:
       - scb-net
+    depends_on:
+      - scb-backend
 
   scb-backend:
     container_name: scb-backend
@@ -41,7 +43,6 @@ services:
     working_dir: /scb
     volumes:
       - ./scb-backend/scb:/scb
-      - ~/data/scb/static/:/static
       - ~/data/scb/media/:/media
     command: bash -c "make migrate && make fix_load && gunicorn scb.wsgi:application --workers=2 --bind 0.0.0.0:8000 & celery -A scb worker -l INFO -c 2"
     ports:
@@ -78,8 +79,8 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_DB: postgres
     volumes:
-      - /data/scb/postgres/data/:/var/lib/postgresql/data
-      - /data/scb/pginit/:/docker-entrypoint-initdb.d
+      - ~/data/scb/postgres/data/:/var/lib/postgresql/data
+      - ~/data/scb/pginit/:/docker-entrypoint-initdb.d
     networks:
       - scb-net
 
@@ -93,7 +94,7 @@ services:
     ports:
       - "4115:80"
     volumes:
-      - /data/scb/pgadmin:/var/lib/pgadmin
+      - ~/data/scb/pgadmin:/var/lib/pgadmin
     depends_on:
       - scb-postgres
     networks:
@@ -120,7 +121,7 @@ services:
     ports:
       - "4125:6379"
     volumes:
-      - /data/scb/redis/logs:/var/log
-      - /data/scb/redis/data:/data
+      - ~/data/scb/redis/logs:/var/log
+      - ~/data/scb/redis/data:/data
     networks:
       - scb-net

@@ -11,8 +11,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 app = Celery(
     "red",
-    broker=f"amqp://{CONFIG.rabbit_user}:{CONFIG.rabbit_password}@{CONFIG.rabbit_host}:{CONFIG.rabbit_port}/",
-    backend=f"redis://{CONFIG.redis_host}:{CONFIG.redis_port}/{CONFIG.redis_db}",
+    broker=(
+        f"amqp://{CONFIG.rabbit_user}:{CONFIG.rabbit_password}@"
+        f"{CONFIG.rabbit_host}:{CONFIG.rabbit_port}/"
+    ),
+    backend=(
+        f"redis://{CONFIG.redis_host}:{CONFIG.redis_port}/{CONFIG.redis_db}"
+    ),
 )
 
 # Using a string here means the worker doesn't have to serialize
