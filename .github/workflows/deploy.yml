@@ -59,7 +59,7 @@ jobs:
             docker container rm ${{ env.PROJECT_NAME }}-backend
             docker container rm ${{ env.PROJECT_NAME }}-postgres
             docker rmi ${{ env.DOCKER_USER }}/${{ env.DOCKER_REPOSITORY_NAME }}:${{ env.PROJECT_NAME}}-${{ env.V }} -f
-            docker-compose up --force-recreate -f docker-compose.dev.yml -d
+            docker-compose -f docker-compose.dev.yml up --force-recreate -d
             curl \
               --header 'Content-Type: application/json' \
               --request 'POST' --data '{"chat_id":"${{ env.CHAT_ID }}","text":"Job <<deploy>> completed"}' \
