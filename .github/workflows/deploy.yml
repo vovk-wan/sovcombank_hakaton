@@ -52,7 +52,7 @@ jobs:
             cd ${{ env.WORK_DIR }}
             git checkout dev
             git pull
-            docker-compose -f down
+            docker-compose -f docker-compose.dev.yml down
             git stash clear
             git stash -m "удали эту хрень"
             docker container rm ${{ env.PROJECT_NAME }}-nginx
