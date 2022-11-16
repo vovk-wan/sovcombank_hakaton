@@ -6,20 +6,6 @@ networks:
 
 services:
 
-#  scb-nginx:
-#    container_name: scb-nginx
-#    restart: always
-#    build: ./nginx
-#    ports:
-#      - 4100:80
-#    volumes:
-#      - ~/data/scb/static/:/static
-#      - ~/data/scb/media/:/media
-#    depends_on:
-#      - scb-backend
-#    networks:
-#      - scb-net
-
   scb-frontend:
     container_name: scb-frontend
     restart: always
@@ -51,7 +37,7 @@ services:
       DEBUG: 'false'
       SECRET_KEY: 0000000000000000
       CSRF_TRUSTED_ORIGINS: "http://0.0.0.0:4105 http://127.0.0.1:4105"
-      ALLOWED_HOSTS: "127.0.0.1 0.0.0.0"
+      ALLOWED_HOSTS: "127.0.0.1 0.0.0.0 51.250.126.72"
       DJANGO_DB_ENGINE: "django.db.backends.postgresql"
       DJANGO_DB_HOST: scb-postgres
       DJANGO_DB_PORT: 5432
