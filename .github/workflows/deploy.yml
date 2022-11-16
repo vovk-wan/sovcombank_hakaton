@@ -51,10 +51,10 @@ jobs:
           script: |
             cd ${{ env.WORK_DIR }}
             git checkout dev
-            git pull
             docker-compose -f docker-compose.dev.yml down
             git stash clear
             git stash -m "удали эту хрень"
+            git pull
             docker container rm ${{ env.PROJECT_NAME }}-nginx
             docker container rm ${{ env.PROJECT_NAME }}-backend
             docker container rm ${{ env.PROJECT_NAME }}-postgres
