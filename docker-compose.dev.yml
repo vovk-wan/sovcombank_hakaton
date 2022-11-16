@@ -37,8 +37,8 @@ services:
   scb-backend:
     container_name: scb-backend
     restart: always
-    build: ./scb-backend
-    #    image: 11744711/temp_for_hackaton:scb_hack-1.0
+    #build: ./scb-backend
+    image: 11744711/temp_for_hackaton:scb_hack-1.0
 #    image: python:3.10-slim
     working_dir: /scb
     volumes:
