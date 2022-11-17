@@ -1,0 +1,25 @@
+.card-img-top {
+  background: #ADB5BD;
+  width: 100%;
+  height: 150px;
+}
+
+.card {
+  max-width: 1190px;
+  min-width: 250px;
+  margin-right: 8px;
+}
+
+::-webkit-scrollbar {
+  max-width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ADB5BD;
+  width: 120px;
+}
+.line {
+  width: 100%;
+  border: 1px solid #ADB5BD;
+  margin-bottom: 15px;
+}
