@@ -1,0 +1,67 @@
+.reclama {
+  height: 125px;
+}
+
+.card-img-top {
+  background: #ADB5BD;
+  width: 100%;
+  height: 150px;
+}
+
+.card {
+  max-width: 1190px;
+  min-width: 250px;
+  margin-right: 8px;
+}
+
+::-webkit-scrollbar {
+  max-width: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ADB5BD;
+  width: 120px;
+}
+button {
+  font-size: 14px;
+}
+
+.btn-score button {
+  width: 95px;
+  border: #ADB5BD solid 1px;
+}
+
+.form-select {
+  max-width: 285px;
+  height: 42px;
+}
+
+.table tr {
+  vertical-align: middle;
+}
+
+table
+ {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+th {
+  border: solid 1px #ADB5BD;
+  border-style: none solid solid none;
+  padding: 10px;
+}
+
+th:not(:last-child) {
+  border-right: none;
+}
+
+thead tr:first-child th:first-child { border-top-left-radius: 10px; }
+thead tr:first-child th:last-child { border-top-right-radius: 10px; }
+tr:first-child th { border-top-style: solid; border-bottom-style: none; }
+tr th:first-child { border-left-style: solid; }
+tbody { border: 1px; }
+td { border: solid 1px #ADB5BD; border-style: none solid solid none; }
+tr:first-child td { border-top-style: solid; }
+tr td:first-child { border-left-style: solid; }
+td:not(:last-child) { border-right: none; }
