@@ -15,9 +15,7 @@ app = Celery(
         f"amqp://{CONFIG.rabbit_user}:{CONFIG.rabbit_password}@"
         f"{CONFIG.rabbit_host}:{CONFIG.rabbit_port}/"
     ),
-    backend=(
-        f"redis://{CONFIG.redis_host}:{CONFIG.redis_port}/{CONFIG.redis_db}"
-    ),
+    backend=(f"redis://{CONFIG.redis_host}:{CONFIG.redis_port}/{CONFIG.redis_db}"),
 )
 
 # Using a string here means the worker doesn't have to serialize

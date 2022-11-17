@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 
 import sentry_sdk
+from loguru import logger
 from sentry_sdk.integrations.django import DjangoIntegration
 
 from .config import Config
@@ -25,7 +26,9 @@ if config_path.exists():
     CONFIG = Config(_env_file=config_path, _env_file_encoding="UTF-8")
 else:
     CONFIG = Config()
-
+logger.info(
+    f"{CONFIG.rabbit_host}:{CONFIG.rabbit_port}@{CONFIG.rabbit_user}:{CONFIG.rabbit_password}"
+)
 SECRET_KEY = CONFIG.secret_key
 DEBUG = CONFIG.debug
 # DEBUG = False
@@ -41,7 +44,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "drf_yasg",
+    "drf_spectacular",
+    "drf_spectacular_sidecar",
     "rest_framework",
 ]
 if CONFIG.debug:
@@ -125,10 +129,10 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 if DEBUG:
-    STATICFILES_DIRS = (BASE_DIR.parent / "static",)
+    STATICFILES_DIRS = (BASE_DIR.parent.parent / "static",)
 else:
     STATIC_ROOT = Path(CONFIG.data_root) / "static"
-    # STATIC_ROOT = Path(CONFIG.data_root) / "static"
+# STATIC_ROOT = BASE_DIR.parent.parent / "static2"
 
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
@@ -150,9 +154,21 @@ if CONFIG.debug is not True:
     )
 
 REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 10,
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "BuyBank API",
+    "DESCRIPTION": "Тронешь буй - умрёшь от совка",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+    "SWAGGER_UI_DIST": "SIDECAR",  # shorthand to use the sidecar instead
+    "SWAGGER_UI_FAVICON_HREF": "SIDECAR",
+    "REDOC_DIST": "SIDECAR",
+    # OTHER SETTINGS
 }
