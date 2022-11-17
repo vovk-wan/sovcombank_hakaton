@@ -51,15 +51,15 @@ jobs:
           script: |
             cd ${{ env.WORK_DIR }}
             git checkout dev
-            git pull
-            docker-compose -f down
+            docker-compose -f docker-compose.dev.yml down
             git stash clear
             git stash -m "удали эту хрень"
+            git pull
             docker container rm ${{ env.PROJECT_NAME }}-nginx
             docker container rm ${{ env.PROJECT_NAME }}-backend
             docker container rm ${{ env.PROJECT_NAME }}-postgres
             docker rmi ${{ env.DOCKER_USER }}/${{ env.DOCKER_REPOSITORY_NAME }}:${{ env.PROJECT_NAME}}-${{ env.V }} -f
-            docker-compose up --force-recreate -d
+            docker-compose -f docker-compose.dev.yml up --force-recreate -d
             curl \
               --header 'Content-Type: application/json' \
               --request 'POST' --data '{"chat_id":"${{ env.CHAT_ID }}","text":"Job <<deploy>> completed"}' \
