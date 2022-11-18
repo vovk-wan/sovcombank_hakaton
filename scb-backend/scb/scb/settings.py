@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     "drf_spectacular",
     "drf_spectacular_sidecar",
     "rest_framework",
+    "app_portfolio",
+    "app_transaction",
 ]
 if CONFIG.debug:
     INSTALLED_APPS.append("debug_toolbar")
