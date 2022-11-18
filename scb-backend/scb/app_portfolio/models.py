@@ -5,6 +5,9 @@ models.py
 """
 from django.db import models
 
+from app_transaction.models import TransactionModel
+from app_users.models import ProfileModel
+
 
 class RewardStatusModel(models.Model):
     """
@@ -56,7 +59,7 @@ class PortfolioModel(models.Model):
 
     name = models.CharField(max_length=255, verbose_name="название")
     profile = models.ForeignKey(
-        "ProfileModel",
+        ProfileModel,
         on_delete=models.PROTECT,
         related_name="portfolio",
         verbose_name="профиль",
@@ -121,7 +124,7 @@ class FavoriteModel(models.Model):
     """
 
     profile = models.ForeignKey(
-        "ProfileModel",
+        ProfileModel,
         on_delete=models.PROTECT,
         related_name="profile",
         verbose_name="профиль",
@@ -168,13 +171,13 @@ class AccountModel(models.Model):
         verbose_name="тип счета",
     )
     current_curency = models.ForeignKey(
-        "CurrentCurencyModel",
+        CurrencyModel,
         on_delete=models.PROTECT,
         related_name="current_curencys",
         verbose_name="текущая валюта",
     )
     transaction = models.ForeignKey(
-        "TransactionModel",
+        TransactionModel,
         on_delete=models.PROTECT,
         related_name="accounts",
         verbose_name="транзакция",

@@ -1,22 +1,33 @@
+"""
+models.py
+---------
+Модуль описывает модели приложения app_users
+"""
 from django.contrib.auth.models import User
 from django.db import models
 
 
-class SubscriptionType(models.Model):
+class SubscriptionTypeModel(models.Model):
     name = models.CharField(max_length=250, verbose_name="Тип подписки")
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         db_table = "subscriptions_types"
 
 
-class Role(models.Model):
+class RoleModel(models.Model):
     name = models.CharField(max_length=250, verbose_name="Тип подписки")
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         db_table = "role"
 
 
-class Profile(models.Model):
+class ProfileModel(models.Model):
     """class for storing additional information about users"""
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -32,18 +43,21 @@ class Profile(models.Model):
         default=None, blank=True, null=True, verbose_name="Биография"
     )
     subscription_type = models.ForeignKey(
-        SubscriptionType,
+        SubscriptionTypeModel,
         related_name="profile",
         on_delete=models.CASCADE,
         verbose_name="Тип подписки",
     )
     role = models.ForeignKey(
-        Role, related_name="profile", on_delete=models.CASCADE, verbose_name="Роль"
+        RoleModel, related_name="profile", on_delete=models.CASCADE, verbose_name="Роль"
     )
     verification = models.BooleanField(default=False)
     published_blog = models.IntegerField(default=0)
     description = models.TextField(max_length=1000, default="", verbose_name="О себе")
     info = models.JSONField(default=None, blank=True, null=True)
+
+    def __str__(self):
+        return self.user.username
 
     class Meta:
         db_table = "profiles"
