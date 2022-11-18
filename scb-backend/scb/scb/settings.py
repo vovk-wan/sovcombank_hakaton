@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "drf_spectacular",
     "drf_spectacular_sidecar",
     "rest_framework",
+    "app_users",
     "app_portfolio",
     "app_transaction",
 ]

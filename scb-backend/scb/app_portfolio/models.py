@@ -20,6 +20,7 @@ class RewardStatusModel(models.Model):
         return self.name
 
     class Meta:
+        db_table = "reward_statuses"
         verbose_name = "Статус награды"
         verbose_name_plural = "Статусы наград"
 
@@ -31,6 +32,9 @@ class CurrencyModel(models.Model):
 
     name = models.CharField(max_length=255, verbose_name="название")
     description = models.TextField(verbose_name="описание")
+
+    class Meta:
+        db_table = "currencies"
 
 
 class RewardModel(models.Model):
@@ -48,6 +52,7 @@ class RewardModel(models.Model):
         return self.name
 
     class Meta:
+        db_table = "rewards"
         verbose_name = "Награда"
         verbose_name_plural = "Награды"
 
@@ -68,7 +73,7 @@ class PortfolioModel(models.Model):
     encouragement = models.ForeignKey(
         RewardModel,
         on_delete=models.PROTECT,
-        related_name="portfolio",
+        related_name="portfolios",
         verbose_name="поощрение",
     )
 
@@ -76,6 +81,7 @@ class PortfolioModel(models.Model):
         return self.name
 
     class Meta:
+        db_table = "portfolio"
         verbose_name = "Портфель"
         verbose_name_plural = "Портфели"
 
@@ -91,6 +97,7 @@ class InstrumentTypeModel(models.Model):
         return self.name
 
     class Meta:
+        db_table = "instrument_types"
         verbose_name = "тип инструмента"
         verbose_name_plural = "типы инструментов"
 
@@ -114,6 +121,7 @@ class InstrumentModel(models.Model):
         return self.name
 
     class Meta:
+        db_table = "instruments"
         verbose_name = "Инструмент"
         verbose_name_plural = "Инструменты"
 
@@ -136,6 +144,9 @@ class FavoriteModel(models.Model):
         verbose_name="инструмент",
     )
 
+    class Meta:
+        db_table = "favorites"
+
 
 class AccountTypeModel(models.Model):
     """
@@ -148,6 +159,7 @@ class AccountTypeModel(models.Model):
         return self.name
 
     class Meta:
+        db_table = "account_types"
         verbose_name = "Тип счета"
         verbose_name_plural = "Типы счетов"
 
@@ -187,5 +199,6 @@ class AccountModel(models.Model):
         return self.name
 
     class Meta:
+        db_table = "accounts"
         verbose_name = "Счёт"
         verbose_name_plural = "Счета"

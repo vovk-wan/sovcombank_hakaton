@@ -8,27 +8,33 @@ from django.db import models
 
 
 class SubscriptionTypeModel(models.Model):
+    """Модель типы подписок"""
     name = models.CharField(max_length=250, verbose_name="Тип подписки")
 
     def __str__(self):
         return self.name
 
     class Meta:
-        db_table = "subscriptions_types"
+        db_table = "subscription_types"
+        verbose_name = "Подписка"
+        verbose_name_plural = "Подписки"
 
 
 class RoleModel(models.Model):
+    """Модель ролей"""
     name = models.CharField(max_length=250, verbose_name="Тип подписки")
 
     def __str__(self):
         return self.name
 
     class Meta:
-        db_table = "role"
+        db_table = "roles"
+        verbose_name = "Роль"
+        verbose_name_plural = "Роли"
 
 
 class ProfileModel(models.Model):
-    """class for storing additional information about users"""
+    """Модель расширение модели пользователей """
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     address = models.CharField(max_length=250, verbose_name="Адрес")
@@ -45,15 +51,17 @@ class ProfileModel(models.Model):
     subscription_type = models.ForeignKey(
         SubscriptionTypeModel,
         related_name="profile",
-        on_delete=models.CASCADE,
+        on_delete=models.PROTECT,
         verbose_name="Тип подписки",
     )
     role = models.ForeignKey(
-        RoleModel, related_name="profile", on_delete=models.CASCADE, verbose_name="Роль"
+        RoleModel,
+        related_name="profile",
+        on_delete=models.PROTECT,
+        verbose_name="Роль"
     )
     verification = models.BooleanField(default=False)
     published_blog = models.IntegerField(default=0)
-    description = models.TextField(max_length=1000, default="", verbose_name="О себе")
     info = models.JSONField(default=None, blank=True, null=True)
 
     def __str__(self):
@@ -61,3 +69,5 @@ class ProfileModel(models.Model):
 
     class Meta:
         db_table = "profiles"
+        verbose_name = "Профиль"
+        verbose_name_plural = "Профили"
