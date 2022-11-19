@@ -13,17 +13,8 @@ class RegisterOutSerializer(serializers.Serializer):
     login = serializers.CharField()
 
 
-class SubscribtionTypeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = SubscriptionTypeModel
-        fields = "__all__"
-
-
 class ProfileOutSerializer(serializers.ModelSerializer):
-
-    subscription_type = SubscribtionTypeSerializer()
-
     class Meta:
         model = ProfileModel
-        fields = "__all__"
+        exclude = ["user"]
         depth = 1
