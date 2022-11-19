@@ -18,7 +18,7 @@ class PortfolioAdmin(admin.ModelAdmin):
     """Регистрация в административной панели моделей"""
 
     search_fields = ["name"]
-    raw_id_fields = ("portfolio",)
+    raw_id_fields = ("profile",)
 
 
 @admin.register(CurrencyModel)
@@ -67,7 +67,7 @@ class InstrumentTypeAdmin(admin.ModelAdmin):
 class FavoriteAdmin(admin.ModelAdmin):
     """Регистрация в административной панели моделей"""
 
-    raw_id_fields = ("portfolio",)
+    raw_id_fields = ("profile",)
 
 
 @admin.register(AccountModel)

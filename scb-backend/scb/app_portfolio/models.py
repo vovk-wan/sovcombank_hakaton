@@ -12,15 +12,16 @@ class CurrencyModel(models.Model):
     """
 
     name = models.CharField(max_length=255, verbose_name="название")
-    description = models.TextField(verbose_name="описание")
+    description = models.CharField(max_length=255, verbose_name="описание")
 
     def __str__(self):
-        return self.name
+        return f"{self.name} :: {self.description}"
 
     class Meta:
         db_table = "currencies"
         verbose_name = "Валюта"
         verbose_name_plural = "Валюты"
+        ordering = ["name"]
 
 
 class RewardStatusModel(models.Model):
