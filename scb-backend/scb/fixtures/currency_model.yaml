@@ -1,0 +1,785 @@
+- model: app_portfolio.currencymodel
+  pk: 316
+  fields:
+    name: AED
+    description: Дирхам ОАЭ
+- model: app_portfolio.currencymodel
+  pk: 317
+  fields:
+    name: AFN
+    description: афганский афгани
+- model: app_portfolio.currencymodel
+  pk: 318
+  fields:
+    name: ALL
+    description: Албанский Лек
+- model: app_portfolio.currencymodel
+  pk: 319
+  fields:
+    name: AMD
+    description: Армянский драм
+- model: app_portfolio.currencymodel
+  pk: 320
+  fields:
+    name: ANG
+    description: Нидерландский антильский гульден
+- model: app_portfolio.currencymodel
+  pk: 321
+  fields:
+    name: AOA
+    description: Ангольская кванза
+- model: app_portfolio.currencymodel
+  pk: 322
+  fields:
+    name: ARS
+    description: Аргентинское песо
+- model: app_portfolio.currencymodel
+  pk: 323
+  fields:
+    name: AUD
+    description: Австралийский доллар
+- model: app_portfolio.currencymodel
+  pk: 324
+  fields:
+    name: AWG
+    description: Арубанский Флорин
+- model: app_portfolio.currencymodel
+  pk: 325
+  fields:
+    name: AZN
+    description: азербайджанский манат
+- model: app_portfolio.currencymodel
+  pk: 326
+  fields:
+    name: BAM
+    description: Конвертируемая марка Боснии и Герцеговины
+- model: app_portfolio.currencymodel
+  pk: 327
+  fields:
+    name: BBD
+    description: Барбадосский доллар
+- model: app_portfolio.currencymodel
+  pk: 328
+  fields:
+    name: BDT
+    description: бангладешская така
+- model: app_portfolio.currencymodel
+  pk: 329
+  fields:
+    name: BGN
+    description: Болгарский лев
+- model: app_portfolio.currencymodel
+  pk: 330
+  fields:
+    name: BHD
+    description: Бахрейнский динар
+- model: app_portfolio.currencymodel
+  pk: 331
+  fields:
+    name: BIF
+    description: Бурундийский франк
+- model: app_portfolio.currencymodel
+  pk: 332
+  fields:
+    name: BMD
+    description: Бермудский доллар
+- model: app_portfolio.currencymodel
+  pk: 333
+  fields:
+    name: BND
+    description: Брунейский доллар
+- model: app_portfolio.currencymodel
+  pk: 334
+  fields:
+    name: BOB
+    description: Боливийский боливиано
+- model: app_portfolio.currencymodel
+  pk: 335
+  fields:
+    name: BRL
+    description: Бразильский реал
+- model: app_portfolio.currencymodel
+  pk: 336
+  fields:
+    name: BSD
+    description: Багамский доллар
+- model: app_portfolio.currencymodel
+  pk: 337
+  fields:
+    name: BTN
+    description: Бутанский нгултрум
+- model: app_portfolio.currencymodel
+  pk: 338
+  fields:
+    name: BWP
+    description: Ботсванская пула
+- model: app_portfolio.currencymodel
+  pk: 339
+  fields:
+    name: BZD
+    description: Белизский доллар
+- model: app_portfolio.currencymodel
+  pk: 340
+  fields:
+    name: CAD
+    description: Канадский доллар
+- model: app_portfolio.currencymodel
+  pk: 341
+  fields:
+    name: CDF
+    description: конголезский франк
+- model: app_portfolio.currencymodel
+  pk: 342
+  fields:
+    name: CHF
+    description: Швейцарский франк
+- model: app_portfolio.currencymodel
+  pk: 343
+  fields:
+    name: CLF
+    description: Чилийская расчетная единица UF
+- model: app_portfolio.currencymodel
+  pk: 344
+  fields:
+    name: CLP
+    description: чилийское песо
+- model: app_portfolio.currencymodel
+  pk: 345
+  fields:
+    name: CNH
+    description: Китайский юань Оффшор
+- model: app_portfolio.currencymodel
+  pk: 346
+  fields:
+    name: CNY
+    description: Китайский юань
+- model: app_portfolio.currencymodel
+  pk: 347
+  fields:
+    name: COP
+    description: Колумбийское песо
+- model: app_portfolio.currencymodel
+  pk: 348
+  fields:
+    name: CUP
+    description: кубинское песо
+- model: app_portfolio.currencymodel
+  pk: 349
+  fields:
+    name: CVE
+    description: Эскудо Кабо-Верде
+- model: app_portfolio.currencymodel
+  pk: 350
+  fields:
+    name: CZK
+    description: Чешская крона
+- model: app_portfolio.currencymodel
+  pk: 351
+  fields:
+    name: DJF
+    description: Джибутийский франк
+- model: app_portfolio.currencymodel
+  pk: 352
+  fields:
+    name: DKK
+    description: датская крона
+- model: app_portfolio.currencymodel
+  pk: 353
+  fields:
+    name: DOP
+    description: Доминиканское песо
+- model: app_portfolio.currencymodel
+  pk: 354
+  fields:
+    name: DZD
+    description: Алжирский динар
+- model: app_portfolio.currencymodel
+  pk: 355
+  fields:
+    name: EGP
+    description: Египетский фунт
+- model: app_portfolio.currencymodel
+  pk: 356
+  fields:
+    name: ERN
+    description: Эритрейская накфа
+- model: app_portfolio.currencymodel
+  pk: 357
+  fields:
+    name: ETB
+    description: Эфиопский быр
+- model: app_portfolio.currencymodel
+  pk: 358
+  fields:
+    name: EUR
+    description: Евро
+- model: app_portfolio.currencymodel
+  pk: 359
+  fields:
+    name: FJD
+    description: фиджийский доллар
+- model: app_portfolio.currencymodel
+  pk: 360
+  fields:
+    name: FKP
+    description: Фунт Фолклендских островов
+- model: app_portfolio.currencymodel
+  pk: 361
+  fields:
+    name: GBP
+    description: Британский фунт стерлингов
+- model: app_portfolio.currencymodel
+  pk: 362
+  fields:
+    name: GEL
+    description: Грузинский лари
+- model: app_portfolio.currencymodel
+  pk: 363
+  fields:
+    name: GHS
+    description: Ганский седи
+- model: app_portfolio.currencymodel
+  pk: 364
+  fields:
+    name: GIP
+    description: Гибралтарский фунт
+- model: app_portfolio.currencymodel
+  pk: 365
+  fields:
+    name: GMD
+    description: Гамбийский даласи
+- model: app_portfolio.currencymodel
+  pk: 366
+  fields:
+    name: GNF
+    description: Гвинейский франк
+- model: app_portfolio.currencymodel
+  pk: 367
+  fields:
+    name: GTQ
+    description: Гватемальский кетсаль
+- model: app_portfolio.currencymodel
+  pk: 368
+  fields:
+    name: GYD
+    description: Гайанский доллар
+- model: app_portfolio.currencymodel
+  pk: 369
+  fields:
+    name: HKD
+    description: Гонконгский доллар
+- model: app_portfolio.currencymodel
+  pk: 370
+  fields:
+    name: HNL
+    description: Гондурасская Лемпира
+- model: app_portfolio.currencymodel
+  pk: 371
+  fields:
+    name: HRK
+    description: Хорватская куна
+- model: app_portfolio.currencymodel
+  pk: 372
+  fields:
+    name: HTG
+    description: Гаитянский гурд
+- model: app_portfolio.currencymodel
+  pk: 373
+  fields:
+    name: HUF
+    description: Венгерский форинт
+- model: app_portfolio.currencymodel
+  pk: 374
+  fields:
+    name: ICP
+    description: Интернет Компьютер
+- model: app_portfolio.currencymodel
+  pk: 375
+  fields:
+    name: IDR
+    description: Индонезийская рупия
+- model: app_portfolio.currencymodel
+  pk: 376
+  fields:
+    name: ILS
+    description: Израильский новый шекель
+- model: app_portfolio.currencymodel
+  pk: 377
+  fields:
+    name: INR
+    description: индийская рупия
+- model: app_portfolio.currencymodel
+  pk: 378
+  fields:
+    name: IQD
+    description: Иракский динар
+- model: app_portfolio.currencymodel
+  pk: 379
+  fields:
+    name: IRR
+    description: Иранский риал
+- model: app_portfolio.currencymodel
+  pk: 380
+  fields:
+    name: ISK
+    description: Исландская крона
+- model: app_portfolio.currencymodel
+  pk: 381
+  fields:
+    name: JEP
+    description: Джерсийский фунт
+- model: app_portfolio.currencymodel
+  pk: 382
+  fields:
+    name: JMD
+    description: Ямайский доллар
+- model: app_portfolio.currencymodel
+  pk: 383
+  fields:
+    name: JOD
+    description: Иорданский динар
+- model: app_portfolio.currencymodel
+  pk: 384
+  fields:
+    name: JPY
+    description: Японская иена
+- model: app_portfolio.currencymodel
+  pk: 385
+  fields:
+    name: KES
+    description: Кенийский шиллинг
+- model: app_portfolio.currencymodel
+  pk: 386
+  fields:
+    name: KGS
+    description: Киргизский сом
+- model: app_portfolio.currencymodel
+  pk: 387
+  fields:
+    name: KHR
+    description: Камбоджийский риель
+- model: app_portfolio.currencymodel
+  pk: 388
+  fields:
+    name: KMF
+    description: Коморский франк
+- model: app_portfolio.currencymodel
+  pk: 389
+  fields:
+    name: KPW
+    description: Северокорейская вона
+- model: app_portfolio.currencymodel
+  pk: 390
+  fields:
+    name: KRW
+    description: Южнокорейский вон
+- model: app_portfolio.currencymodel
+  pk: 391
+  fields:
+    name: KWD
+    description: Кувейтский динар
+- model: app_portfolio.currencymodel
+  pk: 392
+  fields:
+    name: KYD
+    description: Доллар Каймановых островов
+- model: app_portfolio.currencymodel
+  pk: 393
+  fields:
+    name: KZT
+    description: Казахстанский тенге
+- model: app_portfolio.currencymodel
+  pk: 394
+  fields:
+    name: LAK
+    description: лаосский кип
+- model: app_portfolio.currencymodel
+  pk: 395
+  fields:
+    name: LBP
+    description: Ливанский фунт
+- model: app_portfolio.currencymodel
+  pk: 396
+  fields:
+    name: LKR
+    description: Шри-ланкийская рупия
+- model: app_portfolio.currencymodel
+  pk: 397
+  fields:
+    name: LRD
+    description: Либерийский доллар
+- model: app_portfolio.currencymodel
+  pk: 398
+  fields:
+    name: LSL
+    description: Лесото Лоти
+- model: app_portfolio.currencymodel
+  pk: 399
+  fields:
+    name: LYD
+    description: Ливийский динар
+- model: app_portfolio.currencymodel
+  pk: 400
+  fields:
+    name: MAD
+    description: Марокканский дирхам
+- model: app_portfolio.currencymodel
+  pk: 401
+  fields:
+    name: MDL
+    description: молдавский лей
+- model: app_portfolio.currencymodel
+  pk: 402
+  fields:
+    name: MGA
+    description: малагасийский ариари
+- model: app_portfolio.currencymodel
+  pk: 403
+  fields:
+    name: MKD
+    description: Македонский денар
+- model: app_portfolio.currencymodel
+  pk: 404
+  fields:
+    name: MMK
+    description: Мьянма Кьят
+- model: app_portfolio.currencymodel
+  pk: 405
+  fields:
+    name: MNT
+    description: Монгольский тугрик
+- model: app_portfolio.currencymodel
+  pk: 406
+  fields:
+    name: MOP
+    description: Маканская патака
+- model: app_portfolio.currencymodel
+  pk: 407
+  fields:
+    name: MRO
+    description: Мавританская угия (до 2018 г.)
+- model: app_portfolio.currencymodel
+  pk: 408
+  fields:
+    name: MRU
+    description: Мавританская угия
+- model: app_portfolio.currencymodel
+  pk: 409
+  fields:
+    name: MUR
+    description: маврикийская рупия
+- model: app_portfolio.currencymodel
+  pk: 410
+  fields:
+    name: MVR
+    description: Мальдивская руфия
+- model: app_portfolio.currencymodel
+  pk: 411
+  fields:
+    name: MWK
+    description: малавийская квача
+- model: app_portfolio.currencymodel
+  pk: 412
+  fields:
+    name: MXN
+    description: Мексиканское песо
+- model: app_portfolio.currencymodel
+  pk: 413
+  fields:
+    name: MYR
+    description: Малайзийский ринггит
+- model: app_portfolio.currencymodel
+  pk: 414
+  fields:
+    name: MZN
+    description: Мозамбикский метикал
+- model: app_portfolio.currencymodel
+  pk: 415
+  fields:
+    name: NAD
+    description: Намибийский доллар
+- model: app_portfolio.currencymodel
+  pk: 416
+  fields:
+    name: NGN
+    description: нигерийская найра
+- model: app_portfolio.currencymodel
+  pk: 417
+  fields:
+    name: NOK
+    description: норвежская крона
+- model: app_portfolio.currencymodel
+  pk: 418
+  fields:
+    name: NPR
+    description: Непальская рупия
+- model: app_portfolio.currencymodel
+  pk: 419
+  fields:
+    name: NZD
+    description: Новозеландский доллар
+- model: app_portfolio.currencymodel
+  pk: 420
+  fields:
+    name: OMR
+    description: Оманский риал
+- model: app_portfolio.currencymodel
+  pk: 421
+  fields:
+    name: PAB
+    description: панамский бальбоа
+- model: app_portfolio.currencymodel
+  pk: 422
+  fields:
+    name: PEN
+    description: Перуанский Нуэво-Соль
+- model: app_portfolio.currencymodel
+  pk: 423
+  fields:
+    name: PGK
+    description: Папуа-Новая Гвинея Кина
+- model: app_portfolio.currencymodel
+  pk: 424
+  fields:
+    name: PHP
+    description: Филиппинское песо
+- model: app_portfolio.currencymodel
+  pk: 425
+  fields:
+    name: PKR
+    description: Пакистанская рупия
+- model: app_portfolio.currencymodel
+  pk: 426
+  fields:
+    name: PLN
+    description: польский злотый
+- model: app_portfolio.currencymodel
+  pk: 427
+  fields:
+    name: PYG
+    description: Парагвайский гуарани
+- model: app_portfolio.currencymodel
+  pk: 428
+  fields:
+    name: QAR
+    description: Катарский риал
+- model: app_portfolio.currencymodel
+  pk: 429
+  fields:
+    name: RON
+    description: румынский лей
+- model: app_portfolio.currencymodel
+  pk: 430
+  fields:
+    name: RSD
+    description: Сербский динар
+- model: app_portfolio.currencymodel
+  pk: 431
+  fields:
+    name: RUB
+    description: Русский рубль
+- model: app_portfolio.currencymodel
+  pk: 432
+  fields:
+    name: RUR
+    description: Старый русский рубль
+- model: app_portfolio.currencymodel
+  pk: 433
+  fields:
+    name: RWF
+    description: Руандийский франк
+- model: app_portfolio.currencymodel
+  pk: 434
+  fields:
+    name: SAR
+    description: Саудовский риал
+- model: app_portfolio.currencymodel
+  pk: 435
+  fields:
+    name: SBDf
+    description: Доллар Соломоновых островов
+- model: app_portfolio.currencymodel
+  pk: 436
+  fields:
+    name: SCR
+    description: Сейшельская рупия
+- model: app_portfolio.currencymodel
+  pk: 437
+  fields:
+    name: SDG
+    description: Суданский фунт
+- model: app_portfolio.currencymodel
+  pk: 438
+  fields:
+    name: SDR
+    description: Специальные права заимствования
+- model: app_portfolio.currencymodel
+  pk: 439
+  fields:
+    name: SEK
+    description: Шведская крона
+- model: app_portfolio.currencymodel
+  pk: 440
+  fields:
+    name: SGD
+    description: Сингапурский доллар
+- model: app_portfolio.currencymodel
+  pk: 441
+  fields:
+    name: SHP
+    description: Фунт Святой Елены
+- model: app_portfolio.currencymodel
+  pk: 442
+  fields:
+    name: SLL
+    description: Сьерра-Леоне Леоне
+- model: app_portfolio.currencymodel
+  pk: 443
+  fields:
+    name: SOS
+    description: сомалийский шиллинг
+- model: app_portfolio.currencymodel
+  pk: 444
+  fields:
+    name: SRD
+    description: Суринамский доллар
+- model: app_portfolio.currencymodel
+  pk: 445
+  fields:
+    name: SYP
+    description: сирийский фунт
+- model: app_portfolio.currencymodel
+  pk: 446
+  fields:
+    name: SZL
+    description: свази лилангени
+- model: app_portfolio.currencymodel
+  pk: 447
+  fields:
+    name: THB
+    description: тайский бат
+- model: app_portfolio.currencymodel
+  pk: 448
+  fields:
+    name: TJS
+    description: таджикский сомони
+- model: app_portfolio.currencymodel
+  pk: 449
+  fields:
+    name: TMT
+    description: туркменский манат
+- model: app_portfolio.currencymodel
+  pk: 450
+  fields:
+    name: TND
+    description: Тунисский динар
+- model: app_portfolio.currencymodel
+  pk: 451
+  fields:
+    name: TOP
+    description: Тонганская паанга
+- model: app_portfolio.currencymodel
+  pk: 452
+  fields:
+    name: TRY
+    description: Турецкая лира
+- model: app_portfolio.currencymodel
+  pk: 453
+  fields:
+    name: TTD
+    description: Доллар Тринидада и Тобаго
+- model: app_portfolio.currencymodel
+  pk: 454
+  fields:
+    name: TWD
+    description: Новый тайваньский доллар
+- model: app_portfolio.currencymodel
+  pk: 455
+  fields:
+    name: TZS
+    description: Танзанийский шиллинг
+- model: app_portfolio.currencymodel
+  pk: 456
+  fields:
+    name: UAH
+    description: украинская гривна
+- model: app_portfolio.currencymodel
+  pk: 457
+  fields:
+    name: UGX
+    description: Угандийский шиллинг
+- model: app_portfolio.currencymodel
+  pk: 458
+  fields:
+    name: USD
+    description: Доллар США
+- model: app_portfolio.currencymodel
+  pk: 459
+  fields:
+    name: UYU
+    description: Уругвайское песо
+- model: app_portfolio.currencymodel
+  pk: 460
+  fields:
+    name: UZS
+    description: узбекский сом
+- model: app_portfolio.currencymodel
+  pk: 461
+  fields:
+    name: VND
+    description: Вьетнамский донг
+- model: app_portfolio.currencymodel
+  pk: 462
+  fields:
+    name: VUV
+    description: Вануату Вату
+- model: app_portfolio.currencymodel
+  pk: 463
+  fields:
+    name: WST
+    description: Самоанская Тала
+- model: app_portfolio.currencymodel
+  pk: 464
+  fields:
+    name: XAF
+    description: Франк КФА BEAC
+- model: app_portfolio.currencymodel
+  pk: 465
+  fields:
+    name: XCD
+    description: Восточно-карибский доллар
+- model: app_portfolio.currencymodel
+  pk: 466
+  fields:
+    name: XDR
+    description: Специальные права заимствования
+- model: app_portfolio.currencymodel
+  pk: 467
+  fields:
+    name: XOF
+    description: Франк КФА BCEAO
+- model: app_portfolio.currencymodel
+  pk: 468
+  fields:
+    name: XPF
+    description: Франк КФП
+- model: app_portfolio.currencymodel
+  pk: 469
+  fields:
+    name: YER
+    description: Йеменский риал
+- model: app_portfolio.currencymodel
+  pk: 470
+  fields:
+    name: ZAR
+    description: Южноафриканский рэнд
+- model: app_portfolio.currencymodel
+  pk: 471
+  fields:
+    name: ZMW
+    description: Замбийская квача
+- model: app_portfolio.currencymodel
+  pk: 472
+  fields:
+    name: ZWL
+    description: Зимбабвийский доллар
