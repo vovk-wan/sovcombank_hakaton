@@ -12,3 +12,31 @@
     verification: false
     published_blog: 0
     info: null
+- model: app_users.profilemodel
+  pk: 13
+  fields:
+    user: 34
+    address: null
+    gender: null
+    birth_date: null
+    birth_place: null
+    biography: null
+    subscription_type: 1
+    role: 2
+    verification: false
+    published_blog: 0
+    info: null
+- model: app_users.profilemodel
+  pk: 14
+  fields:
+    user: 35
+    address: null
+    gender: null
+    birth_date: null
+    birth_place: null
+    biography: null
+    subscription_type: 1
+    role: 2
+    verification: false
+    published_blog: 0
+    info: null

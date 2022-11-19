@@ -2,3 +2,9 @@
   pk: 1
   fields:
     name: ИИС
+    code: 20
+- model: app_portfolio.accounttypemodel
+  pk: 2
+  fields:
+    name: Брокерский счет
+    code: 10
