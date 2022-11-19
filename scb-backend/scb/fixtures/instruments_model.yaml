@@ -1,0 +1,20 @@
+- model: app_portfolio.instrumenttypemodel
+  pk: 1
+  fields:
+    name: Фьючерс
+- model: app_portfolio.instrumenttypemodel
+  pk: 2
+  fields:
+    name: Опцион
+- model: app_portfolio.instrumenttypemodel
+  pk: 3
+  fields:
+    name: Акция
+- model: app_portfolio.instrumenttypemodel
+  pk: 4
+  fields:
+    name: Фонд
+- model: app_portfolio.instrumenttypemodel
+  pk: 5
+  fields:
+    name: Облигация

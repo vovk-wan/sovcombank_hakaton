@@ -1,0 +1,20 @@
+- model: app_transaction.transactiontypemodel
+  pk: 1
+  fields:
+    name: Покупка
+- model: app_transaction.transactiontypemodel
+  pk: 2
+  fields:
+    name: Продажа
+- model: app_transaction.transactiontypemodel
+  pk: 3
+  fields:
+    name: Пополнение
+- model: app_transaction.transactiontypemodel
+  pk: 4
+  fields:
+    name: Вывод
+- model: app_transaction.transactiontypemodel
+  pk: 5
+  fields:
+    name: Продажа

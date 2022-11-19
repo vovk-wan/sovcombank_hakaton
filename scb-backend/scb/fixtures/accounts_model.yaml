@@ -1,0 +1,4 @@
+- model: app_portfolio.accounttypemodel
+  pk: 1
+  fields:
+    name: ИИС
