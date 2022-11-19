@@ -28,7 +28,7 @@ class RegisterService:
             username=serializer.validated_data.get("login"),
             email=serializer.validated_data.get("login"),
             password=serializer.validated_data.get("password"),
-            is_active=False,
+            is_active=True,
         )
         user.save()
         ProfileService().create(

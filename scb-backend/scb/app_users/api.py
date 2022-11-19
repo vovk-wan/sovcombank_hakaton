@@ -65,7 +65,10 @@ class RegistrationApiView(APIView):
 
 
 class ProfileListApiView(APIView):
+    """api представление для вывода всех профилей"""
+
     def get(self, request, format=None):
+        """получим список профилей для авторизованного юзера"""
         profiles = (
             ProfileModel.objects.select_related("user")
             .prefetch_related(
@@ -76,10 +79,3 @@ class ProfileListApiView(APIView):
         )
         serializer = ProfileOutSerializer(profiles, many=True)
         return Response(serializer.data)
-
-    # def post(self, request, format=None):
-    #     serializer = SnippetSerializer(data=request.data)
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #         return Response(serializer.data, status=status.HTTP_201_CREATED)
-    #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
