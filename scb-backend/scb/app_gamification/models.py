@@ -28,10 +28,9 @@ class AchievementProfileModel(models.Model):
         AchievementModel,
         related_name="achievement_profile",
         on_delete=models.CASCADE,
-        verbose_name="Достижение"
+        verbose_name="Достижение",
     )
-    is_achieve = models.BooleanField(
-        default=False, verbose_name="Достижение получено")
+    is_achieve = models.BooleanField(default=False, verbose_name="Достижение получено")
 
     def __str__(self):
         return self.achievement.name
@@ -43,7 +42,7 @@ class AchievementProfileModel(models.Model):
 
 
 class TituleProfileModel(models.Model):
-    """Модель титул профиля TODO title? """
+    """Модель титул профиля TODO title?"""
 
     name = models.CharField(max_length=250, verbose_name="Титул")
     description = models.TextField(verbose_name="Описание")
@@ -58,7 +57,8 @@ class TituleProfileModel(models.Model):
 
 
 class ExampleModel(models.Model):
-    """ TODO Что это """
+    """TODO Что это"""
+
     name = models.CharField(max_length=250, verbose_name="Задание")
     text = models.CharField(max_length=250, verbose_name="Текст")
     status = models.CharField(max_length=250, verbose_name="Статус")
@@ -67,7 +67,7 @@ class ExampleModel(models.Model):
         RewardModel,
         related_name="examples",
         on_delete=models.PROTECT,
-        verbose_name="Награды"
+        verbose_name="Награды",
     )
 
     def __str__(self):
@@ -86,10 +86,9 @@ class ExampleProfileModel(models.Model):
         ExampleModel,
         related_name="example_profile",
         on_delete=models.CASCADE,
-        verbose_name="Задание"
+        verbose_name="Задание",
     )
-    is_achieve = models.BooleanField(
-        default=False, verbose_name="Задание выполнено")
+    is_achieve = models.BooleanField(default=False, verbose_name="Задание выполнено")
 
     def __str__(self):
         return self.example.name
@@ -102,27 +101,27 @@ class ExampleProfileModel(models.Model):
 
 class GamificationModel(models.Model):
     """Модель геймификации"""
+
     profile = models.OneToOneField(
-        ProfileModel, related_name="gamification",
+        ProfileModel,
+        related_name="gamification",
         on_delete=models.CASCADE,
-        verbose_name="Профиль"
+        verbose_name="Профиль",
     )
     achievements_profile = models.ForeignKey(
-        AchievementProfileModel,
-        related_name="gamification",
-        on_delete=models.PROTECT
+        AchievementProfileModel, related_name="gamification", on_delete=models.PROTECT
     )
     titule_profile = models.OneToOneField(
         TituleProfileModel,
         related_name="gamification",
         on_delete=models.PROTECT,
-        verbose_name="Титул"
+        verbose_name="Титул",
     )
     example_profile = models.ForeignKey(
         ExampleModel,
         related_name="gamification",
         on_delete=models.PROTECT,
-        verbose_name="Задание"
+        verbose_name="Задание",
     )
 
     def __str__(self):

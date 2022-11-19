@@ -9,6 +9,7 @@ from django.db import models
 
 class SubscriptionTypeModel(models.Model):
     """Модель типы подписок"""
+
     name = models.CharField(max_length=250, verbose_name="Тип подписки")
 
     def __str__(self):
@@ -22,6 +23,7 @@ class SubscriptionTypeModel(models.Model):
 
 class RoleModel(models.Model):
     """Модель ролей"""
+
     name = models.CharField(max_length=250, verbose_name="Тип подписки")
 
     def __str__(self):
@@ -34,17 +36,21 @@ class RoleModel(models.Model):
 
 
 class ProfileModel(models.Model):
-    """Модель расширение модели пользователей """
+    """Модель расширение модели пользователей"""
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     address = models.CharField(max_length=250, verbose_name="Адрес")
-    gender = models.CharField(default=None, max_length=5, blank=True, null=True)
+    gender = models.CharField(default=None, max_length=15, blank=True, null=True)
     birth_date = models.DateField(
         default=None, blank=True, null=True, verbose_name="Дата рождения"
     )
-    birth_place = models.CharField(max_length=250,
-                                   default=None, blank=True, null=True, verbose_name="Место рождения"
-                                   )
+    birth_place = models.CharField(
+        max_length=250,
+        default=None,
+        blank=True,
+        null=True,
+        verbose_name="Место рождения",
+    )
     biography = models.TextField(
         default=None, blank=True, null=True, verbose_name="Биография"
     )
@@ -55,10 +61,7 @@ class ProfileModel(models.Model):
         verbose_name="Тип подписки",
     )
     role = models.ForeignKey(
-        RoleModel,
-        related_name="profile",
-        on_delete=models.PROTECT,
-        verbose_name="Роль"
+        RoleModel, related_name="profile", on_delete=models.PROTECT, verbose_name="Роль"
     )
     verification = models.BooleanField(default=False)
     published_blog = models.IntegerField(default=0)

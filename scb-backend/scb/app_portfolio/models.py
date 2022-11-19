@@ -19,8 +19,8 @@ class CurrencyModel(models.Model):
 
     class Meta:
         db_table = "currencies"
-        verbose_name = "Статус награды"
-        verbose_name_plural = "Статусы наград"
+        verbose_name = "Валюта"
+        verbose_name_plural = "Валюты"
 
 
 class RewardStatusModel(models.Model):
@@ -71,7 +71,9 @@ class PortfolioModel(models.Model):
         related_name="portfolio",
         verbose_name="профиль",
     )
-    price = models.DecimalField(verbose_name="цена", db_index=True, decimal_places=2, max_digits=10)
+    price = models.DecimalField(
+        verbose_name="цена", db_index=True, decimal_places=2, max_digits=10
+    )
     encouragement = models.ForeignKey(
         RewardModel,
         on_delete=models.PROTECT,

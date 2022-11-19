@@ -47,7 +47,9 @@ class TransactionModel(models.Model):
     created_at = models.DateTimeField(
         auto_now_add=True, db_index=True, verbose_name="Время транзакции"
     )
-    price = models.DecimalField(verbose_name="сумма транзакции", decimal_places=2, max_digits=10, db_index=True)
+    price = models.DecimalField(
+        verbose_name="сумма транзакции", decimal_places=2, max_digits=10, db_index=True
+    )
 
     def __str__(self):
         return self.transaction_type.name
