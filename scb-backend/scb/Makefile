@@ -15,9 +15,16 @@ fix_dump:
 	./manage.py dumpdata app_users.RoleModel --format=yaml > fixtures/role_model.yaml
 	./manage.py dumpdata app_users.SubscriptionTypeModel --format=yaml > fixtures/subscribe_model.yaml
 
+	./manage.py dumpdata app_portfolio.AccountTypeModel --format=yaml > fixtures/accounts_model.yaml
+	./manage.py dumpdata app_portfolio.InstrumentTypeModel --format=yaml > fixtures/instruments_model.yaml
+	./manage.py dumpdata app_transaction.TransactionTypeModel --format=yaml > fixtures/transactions_model.yaml
+
 fix_load:
 	./manage.py loaddata fixtures/user.yaml
 	./manage.py loaddata fixtures/currency_model.yaml
-	./manage.py loaddata fixtures/profile_model.yaml
 	./manage.py loaddata fixtures/role_model.yaml
 	./manage.py loaddata fixtures/subscribe_model.yaml
+	./manage.py loaddata fixtures/profile_model.yaml
+	./manage.py loaddata fixtures/accounts_model.yaml
+	./manage.py loaddata fixtures/instruments_model.yaml
+	./manage.py loaddata fixtures/transactions_model.yaml

@@ -13,7 +13,7 @@ from rest_framework.serializers import ValidationError
 from rest_framework.views import APIView
 
 from app_users.models import ProfileModel
-from app_users.serialisers import (
+from app_users.serializers import (
     ProfileOutSerializer,
     RegisterInSerialiser,
     RegisterOutSerializer,
@@ -66,7 +66,14 @@ class RegistrationApiView(APIView):
 
 class ProfileListApiView(APIView):
     def get(self, request, format=None):
-        profiles = ProfileModel.objects.filter(user=self.request.user)
+        profiles = (
+            ProfileModel.objects.select_related("user")
+            .prefetch_related(
+                "portfolios__accounts__account_type",
+                "portfolios__accounts__current_currency",
+            )
+            .filter(user=self.request.user)
+        )
         serializer = ProfileOutSerializer(profiles, many=True)
         return Response(serializer.data)
 

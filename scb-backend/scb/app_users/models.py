@@ -7,6 +7,12 @@ from django.contrib.auth.models import User
 from django.db import models
 
 
+class FirstCreateProfile:
+    role = 30
+    account_type = 10
+    currency = "RUB"
+
+
 class RoleCodes:
     admin = 10
     company = 20

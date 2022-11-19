@@ -69,17 +69,23 @@ class PortfolioModel(models.Model):
     profile = models.ForeignKey(
         "app_users.ProfileModel",
         on_delete=models.PROTECT,
-        related_name="portfolio",
+        related_name="portfolios",
         verbose_name="профиль",
     )
     price = models.DecimalField(
-        verbose_name="цена", db_index=True, decimal_places=2, max_digits=10
+        verbose_name="цена",
+        db_index=True,
+        decimal_places=2,
+        max_digits=10,
+        default=0,
     )
-    encouragement = models.ForeignKey(
+    reward = models.ForeignKey(
         RewardModel,
         on_delete=models.PROTECT,
         related_name="portfolios",
         verbose_name="поощрение",
+        null=True,
+        blank=True,
     )
 
     def __str__(self):
@@ -161,6 +167,7 @@ class AccountTypeModel(models.Model):
     """
 
     name = models.CharField(max_length=255, verbose_name="название")
+    code = models.IntegerField(verbose_name="код", default=0)
 
     def __str__(self):
         return self.name
@@ -195,7 +202,7 @@ class AccountModel(models.Model):
     current_currency = models.ForeignKey(
         CurrencyModel,
         on_delete=models.PROTECT,
-        related_name="current_curencys",
+        related_name="current_currencies",
         verbose_name="текущая валюта",
     )
     transaction = models.ForeignKey(
@@ -203,6 +210,8 @@ class AccountModel(models.Model):
         on_delete=models.PROTECT,
         related_name="accounts",
         verbose_name="транзакция",
+        null=True,
+        blank=True,
     )
 
     def __str__(self):
