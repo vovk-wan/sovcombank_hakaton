@@ -25,3 +25,4 @@ cryptography==38.0.1
 pycparser==2.21
 drf-spectacular[sidecar]==0.24.2
 requests
+pillow

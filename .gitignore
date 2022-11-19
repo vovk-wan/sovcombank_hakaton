@@ -2,3 +2,6 @@
 .gitignore
 /.github/
 /static/
+/scb-backend/scb/app_users/migrations/
+/scb-backend/scb/app_transaction/migrations/
+/scb-backend/scb/app_portfolio/migrations/

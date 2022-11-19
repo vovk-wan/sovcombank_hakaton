@@ -42,9 +42,9 @@ class ProfileModel(models.Model):
     birth_date = models.DateField(
         default=None, blank=True, null=True, verbose_name="Дата рождения"
     )
-    birth_place = models.CharField(
-        default=None, blank=True, null=True, verbose_name="Место рождения"
-    )
+    birth_place = models.CharField(max_length=250,
+                                   default=None, blank=True, null=True, verbose_name="Место рождения"
+                                   )
     biography = models.TextField(
         default=None, blank=True, null=True, verbose_name="Биография"
     )

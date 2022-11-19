@@ -5,8 +5,6 @@ models.py
 """
 from django.db import models
 
-from app_portfolio.models import InstrumentModel
-
 
 class TransactionTypeModel(models.Model):
     """
@@ -29,13 +27,13 @@ class TransactionModel(models.Model):
     """
 
     profile = models.ForeignKey(
-        "ProfileModel",
+        "app_users.ProfileModel",
         on_delete=models.PROTECT,
-        related_name="profile",
+        related_name="transactions",
         verbose_name="профиль",
     )
     instrument = models.ForeignKey(
-        InstrumentModel,
+        "app_portfolio.InstrumentModel",
         on_delete=models.PROTECT,
         related_name="transactions",
         verbose_name="инструмент",
@@ -49,7 +47,7 @@ class TransactionModel(models.Model):
     created_at = models.DateTimeField(
         auto_now_add=True, db_index=True, verbose_name="Время транзакции"
     )
-    price = models.DecimalField(verbose_name="сумма транзакции", db_index=True)
+    price = models.DecimalField(verbose_name="сумма транзакции", decimal_places=2, max_digits=10, db_index=True)
 
     def __str__(self):
         return self.transaction_type.name

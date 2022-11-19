@@ -5,8 +5,22 @@ models.py
 """
 from django.db import models
 
-from app_transaction.models import TransactionModel
-from app_users.models import ProfileModel
+
+class CurrencyModel(models.Model):
+    """
+    Модель валюты
+    """
+
+    name = models.CharField(max_length=255, verbose_name="название")
+    description = models.TextField(verbose_name="описание")
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = "currencies"
+        verbose_name = "Статус награды"
+        verbose_name_plural = "Статусы наград"
 
 
 class RewardStatusModel(models.Model):
@@ -25,18 +39,6 @@ class RewardStatusModel(models.Model):
         verbose_name_plural = "Статусы наград"
 
 
-class CurrencyModel(models.Model):
-    """
-    Модель валюты
-    """
-
-    name = models.CharField(max_length=255, verbose_name="название")
-    description = models.TextField(verbose_name="описание")
-
-    class Meta:
-        db_table = "currencies"
-
-
 class RewardModel(models.Model):
     """
     модель системы поощрений
@@ -45,7 +47,7 @@ class RewardModel(models.Model):
     name = models.CharField(max_length=255, verbose_name="название")
     description = models.TextField(verbose_name="описание")
     status = models.ForeignKey(
-        RewardStatusModel, on_delete=models.PROTECT, related_name=""
+        RewardStatusModel, on_delete=models.PROTECT, related_name="rewards"
     )
 
     def __str__(self):
@@ -64,12 +66,12 @@ class PortfolioModel(models.Model):
 
     name = models.CharField(max_length=255, verbose_name="название")
     profile = models.ForeignKey(
-        ProfileModel,
+        "app_users.ProfileModel",
         on_delete=models.PROTECT,
         related_name="portfolio",
         verbose_name="профиль",
     )
-    price = models.DecimalField(verbose_name="цена", db_index=True)
+    price = models.DecimalField(verbose_name="цена", db_index=True, decimal_places=2, max_digits=10)
     encouragement = models.ForeignKey(
         RewardModel,
         on_delete=models.PROTECT,
@@ -132,9 +134,9 @@ class FavoriteModel(models.Model):
     """
 
     profile = models.ForeignKey(
-        ProfileModel,
+        "app_users.ProfileModel",
         on_delete=models.PROTECT,
-        related_name="profile",
+        related_name="favorites",
         verbose_name="профиль",
     )
     instrument = models.ForeignKey(
@@ -146,6 +148,8 @@ class FavoriteModel(models.Model):
 
     class Meta:
         db_table = "favorites"
+        verbose_name = "Избранное"
+        verbose_name_plural = "Избранное"
 
 
 class AccountTypeModel(models.Model):
@@ -189,7 +193,7 @@ class AccountModel(models.Model):
         verbose_name="текущая валюта",
     )
     transaction = models.ForeignKey(
-        TransactionModel,
+        "app_transaction.TransactionModel",
         on_delete=models.PROTECT,
         related_name="accounts",
         verbose_name="транзакция",
