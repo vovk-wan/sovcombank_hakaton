@@ -8,6 +8,7 @@ from pathlib import Path
 
 from django.core.management import BaseCommand
 from loguru import logger
+
 from app_portfolio.models import CurrencyModel
 
 
@@ -16,7 +17,9 @@ def import_(folder: Path):
     csv_file = folder / Path("physical_currency_list.csv")
     image_file = folder / Path("currency.png")
 
-    with open(csv_file, 'r', encoding="cp1251") as fl, open(image_file, 'rb') as image_fl:
+    with open(csv_file, "r", encoding="cp1251") as fl, open(
+        image_file, "rb"
+    ) as image_fl:
         image = image_fl.read()
         reader = csv.DictReader(fl)
         objects = []
@@ -25,8 +28,7 @@ def import_(folder: Path):
             logger.info(item)
             objects.append(
                 CurrencyModel(
-                    description=item["название валюты"],
-                    name=item["currency code"]
+                    description=item["название валюты"], name=item["currency code"]
                 )
             )
         CurrencyModel.objects.bulk_create(objects)
@@ -46,7 +48,9 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         """Обработчик команды"""
-        path = Path(r"./info/physical_currency_list.csv").parent.parent.parent.parent.parent / Path("info")
+        path = Path(
+            r"./info/physical_currency_list.csv"
+        ).parent.parent.parent.parent.parent / Path("info")
         logger.info(f"start: {path.absolute()}")
         import_(path)
         logger.info(f"импорт завершён")
