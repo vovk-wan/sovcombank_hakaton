@@ -177,6 +177,9 @@ class AccountModel(models.Model):
     """
 
     name = models.CharField(max_length=255, verbose_name="название")
+    detail = models.JSONField(
+        null=True, blank=True, verbose_name="делальная информация"
+    )
     portfolio = models.ForeignKey(
         PortfolioModel,
         on_delete=models.PROTECT,
@@ -189,7 +192,7 @@ class AccountModel(models.Model):
         related_name="accounts",
         verbose_name="тип счета",
     )
-    current_curency = models.ForeignKey(
+    current_currency = models.ForeignKey(
         CurrencyModel,
         on_delete=models.PROTECT,
         related_name="current_curencys",

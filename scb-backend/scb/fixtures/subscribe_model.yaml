@@ -1,0 +1,15 @@
+- model: app_users.subscriptiontypemodel
+  pk: 1
+  fields:
+    name: стартовый
+    default: true
+- model: app_users.subscriptiontypemodel
+  pk: 2
+  fields:
+    name: инвестор
+    default: false
+- model: app_users.subscriptiontypemodel
+  pk: 3
+  fields:
+    name: трейдер
+    default: false

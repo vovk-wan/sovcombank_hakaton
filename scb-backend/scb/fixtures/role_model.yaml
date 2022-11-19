@@ -1,0 +1,15 @@
+- model: app_users.rolemodel
+  pk: 1
+  fields:
+    name: Администратор
+    code: 10
+- model: app_users.rolemodel
+  pk: 2
+  fields:
+    name: клиент - физическое лицо
+    code: 30
+- model: app_users.rolemodel
+  pk: 3
+  fields:
+    name: клиент - юридическое лицо
+    code: 20

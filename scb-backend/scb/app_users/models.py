@@ -7,10 +7,17 @@ from django.contrib.auth.models import User
 from django.db import models
 
 
+class RoleCodes:
+    admin = 10
+    company = 20
+    human = 30
+
+
 class SubscriptionTypeModel(models.Model):
     """Модель типы подписок"""
 
     name = models.CharField(max_length=250, verbose_name="Тип подписки")
+    default = models.BooleanField(verbose_name="по умолчанию", default=False)
 
     def __str__(self):
         return self.name
@@ -24,7 +31,8 @@ class SubscriptionTypeModel(models.Model):
 class RoleModel(models.Model):
     """Модель ролей"""
 
-    name = models.CharField(max_length=250, verbose_name="Тип подписки")
+    name = models.CharField(max_length=250, verbose_name="Роль пользователя")
+    code = models.IntegerField(verbose_name="код роли", db_index=True)
 
     def __str__(self):
         return self.name
@@ -39,7 +47,9 @@ class ProfileModel(models.Model):
     """Модель расширение модели пользователей"""
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    address = models.CharField(max_length=250, verbose_name="Адрес")
+    address = models.CharField(
+        max_length=250, verbose_name="Адрес", blank=True, null=True
+    )
     gender = models.CharField(default=None, max_length=15, blank=True, null=True)
     birth_date = models.DateField(
         default=None, blank=True, null=True, verbose_name="Дата рождения"

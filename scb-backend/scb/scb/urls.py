@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import include, path, re_path
+from django.urls import include, path
 from drf_spectacular.views import (
     SpectacularAPIView,
     SpectacularRedocView,
@@ -19,6 +19,7 @@ def trigger_error(request):
 
 urlpatterns = [
     path("api/v1/admin/", admin.site.urls),
+    path("api/v1/", include("app_users.urls")),
     path("sentry-debug/", trigger_error),
     path(
         "api/v1/api-auth/", include("rest_framework.urls", namespace="rest_framework")
@@ -27,9 +28,7 @@ urlpatterns = [
     path("api/v1/test/", TokenRefreshView.as_view(), name="test"),
     path("api/v1/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("api/v1/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
-    # YOUR PATTERNS
     path("api/v1/schema/", SpectacularAPIView.as_view(), name="schema"),
-    # Optional UI:
     path(
         "api/v1/swagger/",
         SpectacularSwaggerView.as_view(url_name="schema"),

@@ -15,7 +15,7 @@ class ProfileAdmin(admin.ModelAdmin):
     """Регистрация в административной панели"""
 
     search_fields = ["user__username"]
-    list_select_related = ["user", "address"]
+    list_select_related = ["user"]
     raw_id_fields = ("user",)
 
 
