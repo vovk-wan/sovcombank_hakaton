@@ -14,21 +14,6 @@
     groups: []
     user_permissions: []
 - model: auth.user
-  pk: 2
-  fields:
-    password: pbkdf2_sha256$390000$BunD6fVPwcDvd6AjIYAqAL$irCHuiVfZeV/HKsmqXCUnB7XRFTAGcXExjoFTBkDlgA=
-    last_login: 2022-11-17 16:44:19.192698+00:00
-    is_superuser: true
-    username: svv
-    first_name: ''
-    last_name: ''
-    email: ''
-    is_staff: true
-    is_active: true
-    date_joined: 2022-11-17 14:22:39.540206+00:00
-    groups: []
-    user_permissions: []
-- model: auth.user
   pk: 14
   fields:
     password: pbkdf2_sha256$390000$CqM7wxkuygtVCNkGfzhoG8$uH7bFgqqhQ/oLcobhQ/JJkZKcxlH+bLS7gMduekYSOk=
